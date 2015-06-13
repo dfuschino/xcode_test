@@ -26,12 +26,21 @@ class ViewController: UIViewController {
         myFirstLabel.center = CGPoint(x: 200, y: 60)
         view.addSubview(myFirstLabel)
         
+        UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0, options: nil, animations: {
+                self.myFirstLabel.center = CGPoint(x: 200, y: 225)
+        }, completion: nil)
+        
         iPhoneLabel = UILabel()
         iPhoneLabel.font = UIFont.boldSystemFontOfSize(48)
         iPhoneLabel.text = "iPhone app"
         iPhoneLabel.sizeToFit()
         iPhoneLabel.center = CGPoint(x: 200, y: 200)
+        iPhoneLabel.alpha = 0
         view.addSubview(iPhoneLabel)
+        UIView.animateWithDuration(2.2, delay: 1, usingSpringWithDamping: 0.4, initialSpringVelocity: 0, options: nil, animations: {
+            self.iPhoneLabel.center = CGPoint(x: 200, y: 300)
+            self.iPhoneLabel.alpha = 1
+        }, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
