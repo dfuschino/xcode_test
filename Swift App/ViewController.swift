@@ -14,33 +14,46 @@ class ViewController: UIViewController {
     //declre ivars
     var myFirstLabel:UILabel!
     var iPhoneLabel: UILabel!
+    var left = 180
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         //create labels
         myFirstLabel = UILabel()
+        iPhoneLabel = UILabel()
+        
+        addLabels()
+        var tapGesture = UITapGestureRecognizer(target: self, action: Selector("handleTapGesture:"))
+        view.addGestureRecognizer(tapGesture)
+    }
+    func handleTapGesture(tapGesture: UITapGestureRecognizer){
+        addLabels()
+    }
+    
+    func addLabels(){
         myFirstLabel.text = "My First"
         myFirstLabel.font = UIFont.systemFontOfSize(36)
         myFirstLabel.sizeToFit()
-        myFirstLabel.center = CGPoint(x: 200, y: 60)
+        myFirstLabel.center = CGPoint(x: left, y: 60)
         view.addSubview(myFirstLabel)
         
         UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0, options: nil, animations: {
-                self.myFirstLabel.center = CGPoint(x: 200, y: 225)
-        }, completion: nil)
+            self.myFirstLabel.center = CGPoint(x: self.left, y: 225)
+            }, completion: nil)
         
-        iPhoneLabel = UILabel()
         iPhoneLabel.font = UIFont.boldSystemFontOfSize(48)
         iPhoneLabel.text = "iPhone app"
         iPhoneLabel.sizeToFit()
-        iPhoneLabel.center = CGPoint(x: 200, y: 200)
+        iPhoneLabel.center = CGPoint(x: left, y: 200)
         iPhoneLabel.alpha = 0
         view.addSubview(iPhoneLabel)
-        UIView.animateWithDuration(2.2, delay: 1, usingSpringWithDamping: 0.4, initialSpringVelocity: 0, options: nil, animations: {
-            self.iPhoneLabel.center = CGPoint(x: 200, y: 300)
+        
+        UIView.animateWithDuration(1.2, delay: 1, usingSpringWithDamping: 0.4, initialSpringVelocity: 0, options: nil, animations: {
+            self.iPhoneLabel.center = CGPoint(x: self.left, y: 300)
             self.iPhoneLabel.alpha = 1
-        }, completion: nil)
+            }, completion: nil)
+
     }
 
     override func didReceiveMemoryWarning() {
